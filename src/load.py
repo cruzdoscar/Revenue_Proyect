@@ -2,21 +2,25 @@ import pandas as pd
 import sqlite3
 from pathlib import Path
 
-def load_to_sqlite(df: pd.DataFrame, db_path: str = "data/hotel_data.db", table_name: str = "clean_bookings", if_exists_strategy: str = "append") -> None:
+def load_to_sqlite(df: pd.DataFrame, table_name: str, if_exists_strategy: str, db_path: str = "data/hotel_data.db") -> None:
     """
     Carga el DataFrame trasnformado a una tabla estructurada.
     
     Parámetros:
-    ------------
-    df: pd.DataFrame
-        DataFrame con los datos limpios y variables de Revenue Engineering.
-    db_path : str
-        Ruta del archivo con la base de datos.
-    table_name : str
-        Nombre de la tabla destino donde se guardarán los datos.
-    if_exists_strategy : str
-        Estrategia si la tabla ya existe: 'replace' (sobreescribir) o 'append' (anexar).
-    """
+        ------------
+        df: pd.DataFrame
+            DataFrame a cargar.
+    
+        table_name : str
+            Nombre de la tabla destino donde se guardarán los datos. Obligatorio,
+            ya que cada llamada debe declarar explícitamente a qué tabla escribe.
+    
+        if_exists_strategy : str
+            Estrategia si la tabla ya existe: 'replace' (sobreescribir) o 'append' (anexar).
+            
+        db_path : str
+            Ruta del archivo con la base de datos.
+        """
 
     print("💾 Iniciando proceso de carga de datos...")
 
@@ -40,7 +44,7 @@ def load_to_sqlite(df: pd.DataFrame, db_path: str = "data/hotel_data.db", table_
             con=conn,
             if_exists=if_exists_strategy,
             index=False,
-            chunksize=5000 # Insertamos de 5,000 en 5,000 filas para mayor eficiencia
+            chunksize=5000 # Inyectamos en bloques de 5,000 filas para mayor eficiencia
         )
 
         # 4. Validacion posterior a la carga mediante consulta SQL

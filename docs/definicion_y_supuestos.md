@@ -73,3 +73,44 @@ Se agrupa la ocupación expandida por `hotel + room_type + fecha`, y se toma el 
 ## 6. Próximos pasos
 
 Esta capacidad simulada se integra a la base de datos `\data\hotel_data.db` como tabla de referencia (`hotel + room_type → capacidad_simulada`), disponible para las Fases 2 (EDA), 3 (pruebas de hipótesis) y 4 (dashboards).
+
+## Supuestos de Inventario y CPoR (Cost per Occupied Room)
+
+Para el cálculo del ARPAR (Adjusted RevPAR) mediante la fórmula:
+
+$$\text{ARPAR} = \frac{\text{Ingresos Totales} - (\text{CPoR} \times \text{Habitaciones Ocupadas})}{\text{Habitaciones Totales Disponibles}}$$
+
+Se establecen los siguientes supuestos de costos operativos por habitación ocupada (CPoR) según el tipo de hotel y la tipología de la habitación (asumiendo una escala donde A es la tipología base/estándar y las letras posteriores implican mayor espacio, mejores amenidades o servicios superiores):
+
+### 1. City Hotel (Total Habitaciones: 252)
+
+*Características operativas:* Mayor rotación, menor costo de áreas comunes por habitación, enfoque ejecutivo.
+
+| room_type | capacidad_simulada | CPoR Estimado (Base €) | Justificación de Supuesto |
+| :--- | :---: | :---: | :--- |
+| **A** | 146 | **18.00 €** | Habitación estándar individual/doble. Costo base de lavandería, amenities estándar y limpieza rápida. |
+| **B** | 15 | **22.00 €** | Habitación Twin/Superior con ligera variación en amenidades. |
+| **C** | 3 | **35.00 €** | Habitaciones especiales / triples con mayor desgaste y rotación de blanco. |
+| **D** | 57 | **20.00 €** | Habitación doble ejecutiva. |
+| **E** | 10 | **45.00 €** | Junior Suite. Incluye kit de amenidades premium, cafetera, albornoces y mayor tiempo de limpieza. |
+| **F** | 8 | **55.00 €** | Suite ejecutiva. |
+| **G** | 5 | **70.00 €** | Suite de Lujo / Penthouse. |
+| **K** | 8 | **25.00 €** | Tipología especial / Familiar adaptada. |
+
+---
+
+### 2. Resort Hotel (Total Habitaciones: 226)
+
+*Características operativas:* Estancias más largas, costos de mantenimiento de áreas recreativas prorrateados, amenidades vacacionales más robustas.
+
+| room_type | capacidad_simulada | CPoR Estimado (Base €) | Justificación de Supuesto |
+| :--- | :---: | :---: | :--- |
+| **A** | 75 | **22.00 €** | Standard Resort Room. Limpieza estándar y amenidades básicas de playa/piscina. |
+| **B** | 2 | **28.00 €** | Habitaciones con vista o características mejoradas. |
+| **C** | 13 | **32.00 €** | Habitaciones superiores con detalles vacacionales. |
+| **D** | 53 | **25.00 €** | Doble estándar ampliada. |
+| **E** | 33 | **40.00 €** | Bungalow / Habitaciones familiares (mayor desgaste de blancos y limpieza profunda). |
+| **F** | 13 | **50.00 €** | Habitaciones con privilegios o acceso directos a zonas húmedas/piscina. |
+| **G** | 9 | **65.00 €** | Suite familiar / con terraza privada. |
+| **H** | 4 | **85.00 €** | Villa / Suite de lujo con servicio personalizado. |
+| **I** | 8 | **95.00 €** | Máxima categoría (Presidential Villa / Master Suite). |
