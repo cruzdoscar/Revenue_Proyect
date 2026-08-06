@@ -88,7 +88,7 @@ Clasifiqué cada tipología en un cuartil de categoría según su ranking de BAR
 ## 1. City Hotel (Inventario Total: 252 habitaciones)
 
 | room_type | capacidad_simulada | BAR Max (€) | ADR Promedio Ref (€) | CPoR Estimado (€) | Categoría | Tipo de Habitación |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | **A** | 146 | 300.00 | 97.29 | **26.27 €** | Standard | Habitación Doble Estándar |
 | **B** | 15 | 263.55 | 93.72 | **30.93 €** | Economy | Habitación Económica interior (sin vista) |
 | **C** | 2 | 213.00 | 99.83 | **32.94 €** | Economy | Habitación de Hospitalidad |
