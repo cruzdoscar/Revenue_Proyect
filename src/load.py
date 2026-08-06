@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 from pathlib import Path
 
-def load_to_sqlite(df: pd.DataFrame, table_name: str, if_exists_strategy: str, db_path: str = "data/hotel_data.db") -> None:
+def load_to_sqlite(df: pd.DataFrame, table_name: str, if_exists_strategy: str, db_path: str = "../data/hotel_data.db") -> None:
     """
     Carga el DataFrame trasnformado a una tabla estructurada.
     
